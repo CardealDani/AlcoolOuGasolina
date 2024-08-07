@@ -1,43 +1,78 @@
 package com.example.alcoolougasolina
 
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Switch
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
-    var percentual:Double = 0.7
+    var percentual: Double = 0.7
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("PDM23","No onCreate, $percentual")
+
+        if (savedInstanceState != null) {
+            percentual = savedInstanceState.getDouble("percentual")
+        }
+        Log.d("PDM23", "No onCreate, $percentual")
+
+        var sp:SharedPreferences = getSharedPreferences("alcool_gasolina", MODE_PRIVATE)
+        val isChecked = sp.getBoolean("switch_state", false)
+        percentual = if (isChecked) 0.75 else 0.7
+
+
 
         val btCalc: Button = findViewById(R.id.btCalcular)
-        btCalc.setOnClickListener(View.OnClickListener {
-            //código do evento
-            percentual=0.75
-            Log.d("PDM23","No btCalcular, $percentual")
-        })
+        val swCalc: Switch = findViewById(R.id.swPercentual)
+
+        swCalc.isChecked = isChecked
+
+        swCalc.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                percentual = 0.75
+            } else {
+                percentual = 0.7
+            }
+            var editor = sp.edit()
+            editor.putBoolean("switch_state", isChecked)
+            editor.commit()
+
+            Log.d("PDM23", "Percentual alterado para: $percentual")
+        }
+
+        btCalc.setOnClickListener {
+            Log.d("PDM23", "No btCalcular, $percentual")
+            val gasolinaString = findViewById<EditText>(R.id.edGasolina).text.toString()
+            val alcoolString = findViewById<EditText>(R.id.edAlcool).text.toString()
+
+            if (gasolinaString.isNotEmpty() && alcoolString.isNotEmpty()) {
+                val gasolinaValor = gasolinaString.toDouble()
+                val alcoolValor = alcoolString.toDouble()
+                calcular(gasolinaValor, alcoolValor, percentual)
+            } else {
+                findViewById<TextView>(R.id.resultado).text = "Preencha os valores dos combustíveis"
+            }
+        }
     }
-override fun onResume(){
-    super.onResume()
-    Log.d("PDM23","No onResume, $percentual")
-}
-override fun onStart(){
-    super.onStart()
-    Log.d("PDM23","No onResume")
-}
-override fun onPause(){
-    super.onPause()
-    Log.d("PDM23","No onResume")
-}
-override fun onStop(){
-    super.onStop()
-    Log.d("PDM23","No onResume")
-}
-override fun onDestroy(){
-    super.onDestroy()
-    Log.d("PDM23","No onResume")
-}
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putDouble("percentual", percentual)
+        super.onSaveInstanceState(outState)
+    }
+
+    fun calcular(gaso: Double, alcool: Double, perc: Double) {
+        val result = findViewById<TextView>(R.id.resultado)
+
+        if (gaso * perc == alcool) {
+            result.text = "Álcool"
+        } else {
+            result.text = "Gasolina"
+        }
+    }
 }
