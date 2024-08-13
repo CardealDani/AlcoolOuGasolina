@@ -9,14 +9,13 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="3dp"
-        android:padding="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="50dp"
         android:background="@drawable/rounded_layout"
         android:backgroundTint="?android:backgroundTint"
         android:orientation="vertical"
+        android:padding="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +23,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="uma bomba de gasolina ilustrando o app"
             android:paddingVertical="10dp"
@@ -41,7 +40,7 @@
             android:text="@string/app_name"
             android:textAlignment="center"
             android:textColor="@color/titleColor"
-            android:textSize="25sp"
+            android:textSize="55sp"
             android:textStyle="bold" />
 
         <EditText
@@ -50,12 +49,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="30dp"
-            android:paddingVertical="20sp"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/textColorHint"
+            android:textSize="50dp"
             android:backgroundTint="#AEAEAE"
             android:hint="Preço da gasolina"
-            android:inputType="numberDecimal" />
+            android:layout_marginTop="40dp"
+
+            android:inputType="numberDecimal"
+            android:paddingVertical="20sp"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textColorHint" />
 
         <EditText
             android:id="@+id/edAlcool"
@@ -63,20 +65,24 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="30dp"
-            android:paddingVertical="20sp"
-            android:textColor="@color/textColor"
-            android:textColorHint="@color/textColorHint"
+            android:layout_marginTop="40dp"
+            android:textSize="50dp"
             android:backgroundTint="#AEAEAE"
             android:hint="Preço do Álcool"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:paddingVertical="20sp"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textColorHint" />
 
         <Switch
             android:id="@+id/swPercentual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="30dp"
             android:layout_gravity="right"
             android:layout_marginHorizontal="30dp"
+            android:paddingVertical="30dp"
+            android:scaleX="2.5"
+            android:scaleY="2.5"
             android:text="75%" />
 
         <Button
@@ -84,10 +90,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:textSize="50sp"
             android:layout_marginVertical="20dp"
             android:backgroundTint="#4C4ECB"
-            android:textColor="@color/white"
-            android:text="@string/btn_calc" />
+            android:text="@string/btn_calc"
+            android:textColor="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -96,8 +103,9 @@
             android:layout_marginBottom="10dp"
             android:text="@string/text_resul"
             android:textAlignment="center"
-            android:textSize="25sp"
+            android:textSize="45sp"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/resultado"
             android:layout_width="wrap_content"
@@ -105,7 +113,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:textAlignment="center"
-            android:textSize="25sp"
+            android:textSize="45sp"
             android:textStyle="bold" />
 
     </LinearLayout>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">With what fuel?</string>
+    <string name="btn_calc">Calculate</string>
+    <string name="text_resul">More profitable:</string>
+</resources>
