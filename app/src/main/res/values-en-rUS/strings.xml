@@ -2,4 +2,6 @@
     <string name="app_name">With what fuel?</string>
     <string name="btn_calc">Calculate</string>
     <string name="text_resul">More profitable:</string>
+    <string name="price_gasol">Price of gasoline</string>
+    <string name="price_alcool">Price of alcohol</string>
 </resources>

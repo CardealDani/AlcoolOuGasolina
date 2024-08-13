@@ -2,4 +2,6 @@
     <string name="app_name">Com qual combustível?</string>
     <string name="btn_calc">Calcular</string>
     <string name="text_resul">Mais rentável:</string>
+    <string name="price_gasol">Preço da gasolina</string>
+    <string name="price_alcool">Preço do Álcool</string>
 </resources>

@@ -50,7 +50,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="30dp"
             android:backgroundTint="#AEAEAE"
-            android:hint="Preço da gasolina"
+            android:hint="@string/price_gasol"
             android:textAlignment="center"
             android:inputType="numberDecimal"
             android:paddingVertical="20sp"
@@ -68,7 +68,7 @@
             android:textColor="@color/textColor"
             android:textColorHint="@color/textColorHint"
             android:backgroundTint="#AEAEAE"
-            android:hint="Preço do Álcool"
+            android:hint="@string/price_alcool"
             android:inputType="numberDecimal" />
 
         <Switch
